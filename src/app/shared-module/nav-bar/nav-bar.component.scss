@@ -73,6 +73,10 @@ a {
     background-color: #062F68;
 }
 
+::ng-deep .mat-typography h1 {
+    font-weight: 600 !important;
+}
+
 
 /* ================================= 
   Media Queries
