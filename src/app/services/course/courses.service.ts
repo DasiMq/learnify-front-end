@@ -14,6 +14,9 @@ export class CoursesService {
 
   getAllCourses() : Observable<Course[]> {
     return this.http.get<Course[]>(this.baseApiUrl + '/api/Course');
+  }
 
+  addCourse(addCourseRequest: Course) {
+    return this.http.post<Course>(this.baseApiUrl + '/api/Course', addCourseRequest);
   }
 }

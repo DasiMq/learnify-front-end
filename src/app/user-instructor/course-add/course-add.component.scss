@@ -65,6 +65,10 @@
     min-height: 50px !important;
 }
 
+::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    font-family: 'Poppins';
+}
+
 .form-group-btn {
     margin-top: 10px;
 }
