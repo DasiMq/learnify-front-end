@@ -21,10 +21,15 @@ export class CoursesService {
   }
 
   getCourse(courseId: number) : Observable<Course>{
-    return this.http.get<Course>(this.baseApiUrl + '/api/Course' + courseId)
+    return this.http.get<Course>(this.baseApiUrl + '/api/Course/' + courseId)
   }
 
-  // updateProduct(updateCourseRequest: Course )Observable<any> {
-  //   return this.http.put(this.baseApiUrl + '/api/Course', updateCourseRequest);
-  // }
+  updateCourse(courseId: number, updateCourseRequest: Course ) : Observable<Course> {
+    return this.http.put<Course>(`${this.baseApiUrl}/api/Course/${courseId}`, updateCourseRequest);
+  }
+
+  deleteCourse(courseId: number): Observable<Course> {
+    return this.http.delete<Course>(`${this.baseApiUrl}/api/Course/${courseId}`);
+  }
+  
 }

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { catchError, throwError } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
 import { CoursesService } from 'src/app/services/course/courses.service';
 
@@ -42,17 +43,21 @@ export class CourseInsComponent implements AfterViewInit, OnInit {
       }
   }
 
-  getCourse(id: number) {
-    // Get a specific course by ID
-    this.coursesService.getCourse(1).subscribe(
-      (course: Course) => {
-        console.log(course);
-        // do something with the course data
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
+  deleteCourse(courseId: number): void {
+    this.coursesService.deleteCourse(courseId)
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          return throwError(error);
+        })
+      )
+      .subscribe(() => {
+        // Success
+        console.log('Course deleted successfully');
+        this.ngOnInit();
+      });
   }
+  
+
 }
 

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { mergeMap } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
 import { CoursesService } from 'src/app/services/course/courses.service';
+import { createLogicalAnd } from 'typescript';
 
 @Component({
   selector: 'app-course-update',
@@ -11,17 +13,18 @@ import { CoursesService } from 'src/app/services/course/courses.service';
 })
 export class CourseUpdateComponent implements OnInit {
   course!: Course;
-  courseId: number = 0;
+  submitted = false;
+  courseId = this.route.snapshot.params['courseId'];
   courseForm: FormGroup = new FormGroup({});
   constructor(private route: ActivatedRoute, public router: Router, private fb: FormBuilder, private coursesService: CoursesService) { }
 
-  // courseDetails: Course = {
-  //   courseId: 0,
-  //   courseName: '',
-  //   courseDescription: '',
-  //   courseDuration: 0,
-  //   coursePrice: 0
-  // };
+  courseDetails: Course = {
+    courseId: 0,
+    courseName: '',
+    courseDescription: '',
+    courseDuration: 0,
+    coursePrice: 0
+  };
 
   ngOnInit(): void {
     this.getCourse(this.courseId);
@@ -36,40 +39,48 @@ export class CourseUpdateComponent implements OnInit {
   }
 
   getCourse(courseId: number) {
-    this.coursesService.getCourse(courseId).subscribe(resp => {
-      this.course = resp;
-      console.log(this.course);
-    })
+    // console.log(this.courseForm.value);
+    this.coursesService.getCourse(courseId)
+      .subscribe({
+        next: (response: Course) => {
+          // console.log(response);
+          this.courseDetails = response;
+          console.log(this.courseDetails);
+        },
+        error: (error: any) => {
+          console.log(error);
+        }
+      });
   }
 
 
+  updateCourse() {
+    this.courseForm.value.courseId = this.courseId;
+    console.log(this.courseForm.value);
 
-  // onUpdate(courseId: number) {
-  //   console.log(this.courseForm.value);
-  //   this.coursesService.updateCourse(courseId, this.courseForm.value)
-  //   .subscribe(response => {
-  //     console.log(response);
-  //     this.courseForm.reset();
-  //     this.router.navigate(['/instructor-course/update-course/' + this.courseId]);
-  //   })
+    // Get the original course object from the server
+    this.coursesService.getCourse(this.courseId).pipe(
+      mergeMap((originalCourse: Course) => {
+        // Create a new object with the updated properties merged from the form
 
+        // Copy all properties from the original course
+        // Merge in the updated properties from the form
+        // Merge two JavaScript objects at runtime
+        const updatedCourse: Course = { ...originalCourse, ...this.courseForm.value };
 
+        // Send the updated course to the server
+        return this.coursesService.updateCourse(this.courseId, updatedCourse);
+      })
+    ).subscribe({
+      next: (response: Course) => {
+        this.submitted = true;
+        console.log(response);
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
 
-
-
-
-    // this.route.paramMap.subscribe({
-    //   next: (params) => {
-    //     const courseId = params.get('courseId');
-    //     if(courseId) {
-    //       this.coursesService.getCourse(parseInt(courseId, 10))
-    //       .subscribe({
-    //         next: (response) => {
-    //           this.courseForm.setValue(response);
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
   }
+}
 

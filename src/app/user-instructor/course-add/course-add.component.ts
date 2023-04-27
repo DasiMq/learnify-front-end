@@ -10,6 +10,7 @@ import { CoursesService } from 'src/app/services/course/courses.service';
 export class CourseAddComponent {
 
   courseForm: FormGroup = new FormGroup({});
+  router: any;
   constructor(private fb: FormBuilder, private coursesService: CoursesService) { }
 
   ngOnInit(): void {
@@ -26,8 +27,8 @@ export class CourseAddComponent {
     console.log(this.courseForm.value);
     this.coursesService
       .addCourse(this.courseForm.value)
-      .subscribe((res) => {
-        console.log(res);
+      .subscribe((response) => {
+        console.log(response);
         this.courseForm.reset();
       });
   }
