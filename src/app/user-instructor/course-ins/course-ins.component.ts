@@ -44,20 +44,19 @@ export class CourseInsComponent implements AfterViewInit, OnInit {
   }
 
   deleteCourse(courseId: number): void {
-    this.coursesService.deleteCourse(courseId)
-      .pipe(
-        catchError((error) => {
-          console.log(error);
-          return throwError(error);
-        })
-      )
-      .subscribe(() => {
-        // Success
-        console.log('Course deleted successfully');
-        this.ngOnInit();
-      });
+    if (confirm("Are you sure to delete?")) {
+      this.coursesService.deleteCourse(courseId)
+        .pipe(
+          catchError((error) => {
+            console.log(error);
+            return throwError(() => new Error(error.message));
+          })
+        )
+        .subscribe(() => {
+          console.log('Course deleted successfully');
+          this.ngOnInit();
+        });
+    }
   }
-  
-
 }
 

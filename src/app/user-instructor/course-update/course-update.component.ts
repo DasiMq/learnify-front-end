@@ -43,8 +43,12 @@ export class CourseUpdateComponent implements OnInit {
     this.coursesService.getCourse(courseId)
       .subscribe({
         next: (response: Course) => {
-          // console.log(response);
           this.courseDetails = response;
+          this.courseForm.controls['courseName'].setValue(this.courseDetails.courseName);
+          this.courseForm.controls['courseDescription'].setValue(this.courseDetails.courseDescription);
+          this.courseForm.controls['courseDuration'].setValue(this.courseDetails.courseDuration);
+          this.courseForm.controls['coursePrice'].setValue(this.courseDetails.coursePrice);
+          
           console.log(this.courseDetails);
         },
         error: (error: any) => {
