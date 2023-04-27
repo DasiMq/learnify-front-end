@@ -1,1 +1,43 @@
-<p>course-update works!</p>
+<app-nav-bar></app-nav-bar>
+
+<div class="title-container">
+    <div class="title">Update Course</div>
+    <div class="btn-container"></div>
+</div>
+
+<form class="add-course-form" [formGroup]="courseForm" (ngSubmit)="getCourse(courseId)">
+    <label class="label-name">Course Id</label>
+    <mat-form-field class="form-control">
+        <mat-label></mat-label>
+        <input matInput placeholder="" class="form-control" formControlName="courseId" readonly="">
+    </mat-form-field>
+
+    <label class="label-name">Course Title</label>
+    <mat-form-field class="form-control">
+        <mat-label></mat-label>
+        <input matInput placeholder="Enter the Course Title" class="form-control" formControlName="courseName">
+    </mat-form-field>
+
+    <label class="label-name">Course Description</label>
+    <mat-form-field class="form-control">
+        <mat-label></mat-label>
+        <textarea matInput placeholder="Enter the Course Description" class="form-control" formControlName="courseDescription"></textarea>
+    </mat-form-field>
+
+    <label class="label-name">Duration</label>
+    <mat-form-field class="form-control">
+        <mat-label></mat-label>
+        <input matInput placeholder="Enter the Course Duration in Minutes" class="form-control" formControlName="courseDuration">
+    </mat-form-field>
+
+    <label class="label-name">Price</label>
+    <mat-form-field class="form-control">
+        <mat-label></mat-label>
+        <input matInput placeholder="Enter the Price" class="form-control" formControlName="coursePrice">
+    </mat-form-field>
+
+    <div class="form-group-btn">
+        <button class="btn" type="submit">Update</button>
+        <button class="btn-2">Cancel</button>
+    </div>
+</form>

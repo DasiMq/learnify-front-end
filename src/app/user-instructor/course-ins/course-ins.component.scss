@@ -39,7 +39,25 @@
     cursor: pointer;
 }
 
-::ng-deep .mat-row:nth-child(even){
+.action-icons {
+    display: flex;
+    flex-direction: row;
+}
+
+.delete-button,
+.edit-button {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.image-edit,
+.image-delete {
+    height: 20px;
+}
+
+::ng-deep .mat-row:nth-child(even) {
     background-color: red;
 }
 
@@ -67,5 +85,3 @@
 ::ng-deep .mat-mdc-table thead {
     border-radius: 10px;
 }
-
-

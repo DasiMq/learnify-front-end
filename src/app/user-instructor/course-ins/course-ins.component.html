@@ -1,56 +1,72 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="title-container">
-    <div class="title">Course</div>
-    <div class="btn-container">
-        <a>
-            <button class="name-button" [routerLink]="['/add-course']">Add Course</button>
-        </a>
-    </div>
+  <div class="title">Course</div>
+  <div class="btn-container">
+    <a>
+      <button class="name-button" [routerLink]="['/add-course']">Add Course</button>
+    </a>
+  </div>
 </div>
 
 <div class="course-table">
-    <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
 
-          <!-- CourseId Column -->
-          <ng-container matColumnDef="courseId">
-            <th mat-header-cell *matHeaderCellDef> Course ID </th>
-            <td mat-cell *matCellDef="let course"> {{course.courseId}} </td>
-          </ng-container>
+      <!-- CourseId Column -->
+      <ng-container matColumnDef="courseId">
+        <th mat-header-cell *matHeaderCellDef> Course ID </th>
+        <td mat-cell *matCellDef="let course"> {{course.courseId}} </td>
+      </ng-container>
 
-          <!-- CourseTitle Column -->
-          <ng-container matColumnDef="courseTitle">
-            <th mat-header-cell *matHeaderCellDef> Course Title </th>
-            <td mat-cell *matCellDef="let course"> {{course.courseName}} </td>
-          </ng-container>
+      <!-- CourseTitle Column -->
+      <ng-container matColumnDef="courseTitle">
+        <th mat-header-cell *matHeaderCellDef> Course Title </th>
+        <td mat-cell *matCellDef="let course"> {{course.courseName}} </td>
+      </ng-container>
 
-          <!-- CourseDescription Column -->
-          <ng-container matColumnDef="courseDescription">
-            <th mat-header-cell *matHeaderCellDef> Course Description </th>
-            <td mat-cell *matCellDef="let course"> {{course.courseDescription}} </td>
-          </ng-container>
+      <!-- CourseDescription Column -->
+      <ng-container matColumnDef="courseDescription">
+        <th mat-header-cell *matHeaderCellDef> Course Description </th>
+        <td mat-cell *matCellDef="let course"> {{course.courseDescription}} </td>
+      </ng-container>
 
-          <!-- CourseDuration Column -->
-          <ng-container matColumnDef="courseDuration">
-            <th mat-header-cell *matHeaderCellDef> Course Duration </th>
-            <td mat-cell *matCellDef="let course"> {{course.courseDuration}} </td>
-          </ng-container>
+      <!-- CourseDuration Column -->
+      <ng-container matColumnDef="courseDuration">
+        <th mat-header-cell *matHeaderCellDef> Course Duration </th>
+        <td mat-cell *matCellDef="let course"> {{course.courseDuration}} </td>
+      </ng-container>
 
-          <!-- CoursePrice Column -->
-          <ng-container matColumnDef="coursePrice">
-            <th mat-header-cell *matHeaderCellDef> Course Price </th>
-            <td mat-cell *matCellDef="let course"> {{course.coursePrice}} </td>
-          </ng-container>
-      
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-      
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                       showFirstLastButtons
-                       aria-label="Select page of courses">
-        </mat-paginator>
-      </div>
-      
+      <!-- CoursePrice Column -->
+      <ng-container matColumnDef="coursePrice">
+        <th mat-header-cell *matHeaderCellDef> Course Price </th>
+        <td mat-cell *matCellDef="let course"> {{course.coursePrice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let course">
+          <div class="action-icons">
+            <a>
+              <button mat-button [routerLink]="['update-course/' + course.courseId]" class="edit-button">
+                <img class="image-edit" src="../../../assets/icons/edit.png" alt="">
+              </button>
+            </a>
+            <a>
+              <button mat-button class="delete-button">
+                <img class="image-delete" src="../../../assets/icons/delete.png" alt="">
+              </button>
+            </a>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of courses">
+    </mat-paginator>
+  </div>
+
 </div>

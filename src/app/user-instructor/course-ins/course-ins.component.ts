@@ -16,7 +16,7 @@ export class CourseInsComponent implements AfterViewInit, OnInit {
   course: Course[] = [];
   constructor(private coursesService: CoursesService) { }
 
-  displayedColumns: string[] = ['courseId', 'courseTitle', 'courseDescription', 'courseDuration', 'coursePrice'];
+  displayedColumns: string[] = ['courseId', 'courseTitle', 'courseDescription', 'courseDuration', 'coursePrice', 'action'];
 
   dataSource = new MatTableDataSource<Course>();
 
@@ -40,6 +40,19 @@ export class CourseInsComponent implements AfterViewInit, OnInit {
       (error: any) => {
         console.log(error);
       }
+  }
+
+  getCourse(id: number) {
+    // Get a specific course by ID
+    this.coursesService.getCourse(1).subscribe(
+      (course: Course) => {
+        console.log(course);
+        // do something with the course data
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
 }
 

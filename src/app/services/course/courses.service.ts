@@ -19,4 +19,12 @@ export class CoursesService {
   addCourse(addCourseRequest: Course) {
     return this.http.post<Course>(this.baseApiUrl + '/api/Course', addCourseRequest);
   }
+
+  getCourse(courseId: number) : Observable<Course>{
+    return this.http.get<Course>(this.baseApiUrl + '/api/Course' + courseId)
+  }
+
+  // updateProduct(updateCourseRequest: Course )Observable<any> {
+  //   return this.http.put(this.baseApiUrl + '/api/Course', updateCourseRequest);
+  // }
 }

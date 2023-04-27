@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Course } from 'src/app/models/course.model';
 import { CoursesService } from 'src/app/services/course/courses.service';
 
 @Component({
