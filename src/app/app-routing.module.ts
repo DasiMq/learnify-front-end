@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CourseInsComponent } from './user-instructor/course-ins/course-ins.component';
 import { CourseAddComponent } from './user-instructor/course-add/course-add.component';
 import { CourseUpdateComponent } from './user-instructor/course-update/course-update.component';
+import { CourseStuComponent } from './user-students/course-stu/course-stu.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CourseInsComponent
+    component: CourseStuComponent
   },
   {
     path: 'instructor-course',
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'instructor-course/update-course/:courseId',
     component: CourseUpdateComponent
+  },
+  {
+    path: 'student-course',
+    component: CourseStuComponent
   }
 ];
 

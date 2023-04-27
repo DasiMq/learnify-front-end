@@ -1,0 +1,29 @@
+<app-nav-bar-student></app-nav-bar-student>
+<div class="title-container">
+    <div class="title">Courses</div>
+    <div class="search-container">
+        <input matInput placeholder="Search course">
+    </div>
+</div>
+
+<div class="main">
+    <ul class="cards">
+        <li class="cards_item" *ngFor="let course of course" [value]="course.courseId">
+            <div class="card">
+                <div class="card_title_content">
+                    <div class="card_title">{{course.courseName}}</div>
+                    <div class="card_content">
+                        <div class="card_text">
+                            <p>{{course.courseDescription}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <a>
+                        <button class="enroll-button">Enroll</button>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

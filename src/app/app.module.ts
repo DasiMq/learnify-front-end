@@ -15,6 +15,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CourseStuComponent } from './user-students/course-stu/course-stu.component';
+import { CourseEnrollComponent } from './user-students/course-enroll/course-enroll.component';
+import { CourseProgressComponent } from './user-students/course-progress/course-progress.component';
+import { NavBarStudentComponent } from './shared-module/nav-bar-student/nav-bar-student.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavBarComponent,
     CourseInsComponent,
     CourseUpdateComponent,
-    CourseAddComponent
+    CourseAddComponent,
+    CourseStuComponent,
+    CourseEnrollComponent,
+    CourseProgressComponent,
+    NavBarStudentComponent
   ],
   imports: [
     BrowserModule,

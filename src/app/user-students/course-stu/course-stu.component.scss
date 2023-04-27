@@ -1,0 +1,153 @@
+body {
+    font-family: "Poppins";
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.title-container {
+    justify-content: space-between;
+    display: flex;
+    background-color: #062F68;
+    width: 60%;
+    margin: 0 auto;
+    height: 120px;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 24px;
+    color: #FFFFFF;
+    padding-left: 40px;
+    padding-top: 48px;
+}
+
+.search-container {
+    margin: auto 0;
+    padding-right: 40px;
+}
+
+.search-container input {
+    padding: 10px 20px ;
+    border-radius: 5px;
+    width: 240px;border: #062F68;
+}
+
+.search-container input:focus {
+    outline: none;
+}
+
+.search-container input::placeholder {
+    color: #667FA2;
+    font-style: italic;
+}
+
+.serach-bar {
+    justify-content: flex-end;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    color: #062F68;
+    height: 40px;
+    width: 140px;
+    border: none;
+    font-weight: 600;
+}
+
+.main {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cards_item {
+    height: 360px;
+    max-height: 360px;
+    background-color: #EBEEF2;
+    border-radius: 5px;
+}
+
+.card {
+    background-color: #EBEEF2;
+    border-radius: 5px;
+    max-height: 360px;
+}
+
+.card_content {
+    padding: 0px 40px 40px 40px;
+    overflow-y: scroll;
+}
+
+.card_content::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 2px;
+}
+
+.card_content::-webkit-scrollbar-track {
+    box-shadow: 0;
+    border-radius: 2px;
+}
+
+.card_content::-webkit-scrollbar-thumb {
+    background: #062F68;
+    border-radius: 2px;
+}
+
+.card_title_content {
+    height: 270px;
+    max-height: 270px;
+}
+
+.card_title {
+    padding: 20px 40px 10px 40px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #062F68;
+    margin-bottom: 10px;
+}
+
+.card_text p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #00092A;
+    margin-bottom: 0px;
+}
+
+.btn-container {
+    margin: auto 0;
+}
+
+.enroll-button {
+    justify-content: flex-end;
+    background-color: #062F68;
+    border-radius: 5px;
+    color: #FFFFFF;
+    height: 40px;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 8%;
+    margin-top: 10%;
+    border: none;
+    font-weight: 600;
+}
+
+.enroll-button:hover {
+    cursor: pointer;
+}
