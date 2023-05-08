@@ -1,1 +1,28 @@
-<p>course-progress works!</p>
+<app-nav-bar-student></app-nav-bar-student>
+<div class="title-container">
+    <div class="title">Progress</div>
+</div>
+
+<div class="main">
+    <ul class="cards">
+        <li class="cards_item" *ngFor="let enrollment of enrollment" [value]="enrollment.enrollmentId">
+            <div class="card">
+                <div class="card_title_content">
+                    <div class="card_title">{{ getCourseName(enrollment.enrollmentCourseId) }}</div>
+                    <div class="card_content">
+                        <div class="card_text">
+                            <p>{{ getCourseDescription(enrollment.enrollmentCourseId) }}</p>
+                        </div>
+                    </div>
+                    <h3>Progress</h3>
+                    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                </div>
+                <div class="btn-container">
+                    <a>
+                        <button class="update-button">Progress Update</button>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -4,6 +4,7 @@ import { CourseInsComponent } from './user-instructor/course-ins/course-ins.comp
 import { CourseAddComponent } from './user-instructor/course-add/course-add.component';
 import { CourseUpdateComponent } from './user-instructor/course-update/course-update.component';
 import { CourseStuComponent } from './user-students/course-stu/course-stu.component';
+import { CourseProgressComponent } from './user-students/course-progress/course-progress.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'student-course',
     component: CourseStuComponent
+  },
+  {
+    path: 'student-progress',
+    component: CourseProgressComponent
   }
 ];
 

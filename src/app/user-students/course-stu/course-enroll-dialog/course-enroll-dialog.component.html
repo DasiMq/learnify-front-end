@@ -1,0 +1,38 @@
+<div class="main">
+    <form class="add-enrollment-form" [formGroup]="enrollmentForm" (ngSubmit)="onSubmit()">
+        <div class="card_title_content">
+            <label class="label-name">Enrollment Date</label>
+            <mat-form-field class="form-control">
+                <mat-label></mat-label>
+                <input matInput value="{{enrollmentDetails.enrollmentDate}}" class="form-control" formControlName="enrollmentDate" readonly="">
+            </mat-form-field>
+
+            <label class="label-name">Payment Status</label>
+            <mat-form-field class="form-control">
+                <mat-label></mat-label>
+                <mat-select matInput value="{{enrollmentDetails.paymentStatus}}" class="form-control" formControlName="paymentStatus">
+                    <mat-option *ngFor="let paymentStatus of paymentStatuses" [value]="paymentStatus.value">
+                        {{paymentStatus.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <label class="label-name">Enrollment StudentId</label>
+            <mat-form-field class="form-control">
+                <mat-label></mat-label>
+                <input matInput value="{{studentDetails.userId}}" class="form-control" formControlName="enrollmentStudentId" readonly="">
+            </mat-form-field>
+
+            <label class="label-name">Enrollment CourseId</label>
+            <mat-form-field class="form-control">
+                <mat-label></mat-label>
+                <input matInput value="{{courseDetails.courseId}}" class="form-control" formControlName="enrollmentCourseId" readonly="">
+            </mat-form-field>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn" type="submit">Enroll</button>
+            <button class="btn-2" [matDialogClose]="true">Cancel</button>
+        </div>
+    </form>
+</div>

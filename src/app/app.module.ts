@@ -19,6 +19,10 @@ import { CourseStuComponent } from './user-students/course-stu/course-stu.compon
 import { CourseEnrollComponent } from './user-students/course-enroll/course-enroll.component';
 import { CourseProgressComponent } from './user-students/course-progress/course-progress.component';
 import { NavBarStudentComponent } from './shared-module/nav-bar-student/nav-bar-student.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CourseEnrollDialogComponent } from './user-students/course-stu/course-enroll-dialog/course-enroll-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { NavBarStudentComponent } from './shared-module/nav-bar-student/nav-bar-
     CourseStuComponent,
     CourseEnrollComponent,
     CourseProgressComponent,
-    NavBarStudentComponent
+    NavBarStudentComponent,
+    CourseEnrollDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,10 @@ import { NavBarStudentComponent } from './shared-module/nav-bar-student/nav-bar-
     MatInputModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
